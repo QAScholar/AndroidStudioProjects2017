@@ -12,9 +12,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     EditText input;
     EditText input2;
-    Button btn;
+    Button plus;
+    Button min;
+    Button multi;
+    Button div;
     TextView output;
-    Button button3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +26,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         input = (EditText) findViewById(R.id.input);
         input2 = (EditText) findViewById(R.id.input2);
         output = (TextView) findViewById(R.id.output);
-        btn = (Button) findViewById(R.id.button);
-        button3=findViewById(R.id.button3);
-        btn.setOnClickListener(this);
-        button3.setOnClickListener(this);
+        plus = findViewById(R.id.button1);
+        min=findViewById(R.id.button2);
+        multi = findViewById(R.id.button3);
+        div=findViewById(R.id.button4);
+
+        plus.setOnClickListener(this);
+        min.setOnClickListener(this);
+        multi.setOnClickListener(this);
+        div.setOnClickListener(this);
+
     }
 //    public void clickButton(View view){
 //
@@ -42,16 +51,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //    }
     @Override
    public void onClick(View view) {
+        String s = input.getText().toString();
+        String s2 = input2.getText().toString();
+        int x = Integer.parseInt(s);
+        int x2 = Integer.parseInt(s2);
+
         switch (view.getId()){
-            case R.id.button:
-                String s = input.getText().toString();
-                String s2 = input2.getText().toString();
-                int x = Integer.parseInt(s);
-                int x2 = Integer.parseInt(s2);
+
+            case R.id.button1:
                 output.setText(String.valueOf(x+x2));
             break;
+            case R.id.button2:
+//
+                output.setText(String.valueOf(x-x2));
+                break;
             case R.id.button3:
-                button3.setTextColor(Color.RED);
+                output.setText(String.valueOf(x*x2));
+                break;
+            case R.id.button4:
+                output.setText(String.valueOf(x/x2));
+                break;
+
             default:
                 break;
         }
